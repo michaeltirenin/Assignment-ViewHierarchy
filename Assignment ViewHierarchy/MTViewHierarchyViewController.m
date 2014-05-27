@@ -7,10 +7,12 @@
 //
 
 #import "MTViewHierarchyViewController.h"
+#import "MTBubbleView.h"
 
-@interface MTViewHierarchyViewController () <UICollisionBehaviorDelegate>
+@interface MTViewHierarchyViewController ()
 
-@property (strong, nonatomic) IBOutlet UIView *bubbleView;
+@property (weak, nonatomic) IBOutlet MTBubbleView *bubbleBounds;
+
 @property (strong, nonatomic) UIDynamicAnimator *animator;
 @property (strong, nonatomic) UIDynamicAnimator *animatorForSnap;
 @property (strong, nonatomic) UIGravityBehavior *gravity;
@@ -29,10 +31,6 @@
 {
     [super viewDidLoad];
     
-    self.bubbleView.backgroundColor = [UIColor orangeColor];
-    self.bubbleView.layer.cornerRadius = self.bubbleView.frame.size.width / 2.0;
-    [self.bubbleView setClipsToBounds:YES];
-    
     [[self instructions] setText:@"Tap to add. \nDouble-tap to move."];
     [[self instructions] setTextAlignment:NSTextAlignmentCenter];
     [[self instructions] setTextColor:[UIColor whiteColor]];
@@ -41,11 +39,11 @@
 - (UIDynamicAnimator *)animator
 {
     if (!_animator) {
-        _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.bubbleView];
+        _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.bubbleBounds];
     }
     return _animator;
 }
-//////
+////
 - (UIDynamicAnimator *)animatorForSnap
 {
     if (!_snapBehavior) {
@@ -69,7 +67,10 @@
 {
     if (!_collider) {
         _collider = [[UICollisionBehavior alloc] init];
-        _collider.translatesReferenceBoundsIntoBoundary = YES;
+//        _collider.translatesReferenceBoundsIntoBoundary = YES;
+        UIBezierPath *bubbleBoundsPath = [UIBezierPath bezierPathWithOvalInRect:self.bubbleBounds.frame];
+        [_collider addBoundaryWithIdentifier:@"bubbleBoundsPath" forPath:bubbleBoundsPath];
+
         [self.animator addBehavior:_collider];
     }
     return _collider;
@@ -79,12 +80,12 @@
 {
     if (!_tinyBubblesBehavior) {
         _tinyBubblesBehavior = [[UIDynamicItemBehavior alloc] init];
-        _tinyBubblesBehavior.resistance = 0.0;
+//        _tinyBubblesBehavior.resistance = 0.0;
 //        _tinyBubblesBehavior.elasticity = (arc4random() % 11 * 0.1); // returns between 0 and 1 (discrete values)
         _tinyBubblesBehavior.elasticity = 0.7;
-        _tinyBubblesBehavior.density = 0.0;
+//        _tinyBubblesBehavior.density = 0.0;
         _tinyBubblesBehavior.friction = 0.0;
-        _tinyBubblesBehavior.allowsRotation = YES;
+//        _tinyBubblesBehavior.allowsRotation = YES;
         [self.animator addBehavior:_tinyBubblesBehavior];
     }
     return _tinyBubblesBehavior;
@@ -100,7 +101,7 @@
     [touches enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
         // Get a single touch and it's location
         UITouch *touch = obj;
-        CGPoint touchPoint = [touch locationInView:self.bubbleView];
+        CGPoint touchPoint = [touch locationInView:self.bubbleBounds];
         
         // Draw a circle where the touch occurred
         UIView *touchView = [[UIView alloc] init];
@@ -109,30 +110,26 @@
         touchView.layer.cornerRadius = touchView.frame.size.width / 2.0;
         [touchView setClipsToBounds:YES];
 
-        [self.bubbleView addSubview:touchView];
+        [self.bubbleBounds addSubview:touchView];
         
         [self.gravity addItem:touchView];
         [self.collider addItem:touchView];
-//        [self.tinyBubblesBehavior addItem:touchView];
     }];
+    
 }
 
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    
+
 }
 
 // removes tiny bubbles ... but their "shape" still remain in the bubbleView?
 - (IBAction)clearAllTinyBubbles:(UIBarButtonItem *)sender
 {
-    for (UIView *touchedView in [self.bubbleView subviews]) {
+    for (UIView *touchedView in [self.bubbleBounds subviews]) {
     [touchedView removeFromSuperview];
     }
     
-//    [self.bubbleView reloadData];
-
-//    [self.bubbleView removeFromSuperview];
-//    [self.bubbleView addSubview:self.view];
 }
 
 - (IBAction)snapGesture:(UITapGestureRecognizer *)gesture
@@ -142,15 +139,10 @@
     // Remove the previous behavior.
     [self.animatorForSnap removeBehavior:self.snapBehavior];
     
-    UISnapBehavior *snapBehavior = [[UISnapBehavior alloc] initWithItem:_bubbleView snapToPoint:point];
+    UISnapBehavior *snapBehavior = [[UISnapBehavior alloc] initWithItem:_bubbleBounds snapToPoint:point];
     [self.animatorForSnap addBehavior:snapBehavior];
     
     self.snapBehavior = snapBehavior;
-}
-
-- (void)collisionBehavior:(UICollisionBehavior *)behavior beganContactForItem:(id<UIDynamicItem>)item withBoundaryIdentifier:(id<NSCopying>)identifier atPoint:(CGPoint)p
-{
-    [_bubbleView setBackgroundColor:[UIColor lightGrayColor]];
 }
 
 @end

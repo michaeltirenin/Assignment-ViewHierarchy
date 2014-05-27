@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F278B71519351EA600412628 /* MTBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F278B71419351EA600412628 /* MTBubbleView.m */; };
 		F2B3EF9E193193E2005981E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B3EF9D193193E2005981E0 /* Foundation.framework */; };
 		F2B3EFA0193193E2005981E0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B3EF9F193193E2005981E0 /* CoreGraphics.framework */; };
 		F2B3EFA2193193E2005981E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B3EFA1193193E2005981E0 /* UIKit.framework */; };
@@ -34,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F278B71319351EA600412628 /* MTBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTBubbleView.h; sourceTree = "<group>"; };
+		F278B71419351EA600412628 /* MTBubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTBubbleView.m; sourceTree = "<group>"; };
 		F2B3EF9A193193E2005981E0 /* Assignment ViewHierarchy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Assignment ViewHierarchy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2B3EF9D193193E2005981E0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F2B3EF9F193193E2005981E0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -155,6 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				F2B3EFAF193193E2005981E0 /* Main.storyboard */,
+				F278B71319351EA600412628 /* MTBubbleView.h */,
+				F278B71419351EA600412628 /* MTBubbleView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -267,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2B3EFD61931BE7D005981E0 /* MTViewHierarchyViewController.m in Sources */,
+				F278B71519351EA600412628 /* MTBubbleView.m in Sources */,
 				F2B3EFAA193193E2005981E0 /* main.m in Sources */,
 				F2B3EFAE193193E2005981E0 /* MTAppDelegate.m in Sources */,
 			);
@@ -473,6 +479,7 @@
 				F2B3EFCE193193E2005981E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F2B3EFCF193193E2005981E0 /* Build configuration list for PBXNativeTarget "Assignment ViewHierarchyTests" */ = {
 			isa = XCConfigurationList;
@@ -481,6 +488,7 @@
 				F2B3EFD1193193E2005981E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
