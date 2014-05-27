@@ -9,14 +9,14 @@
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="MTViewHierarchyViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="aOw-aw-Mfw"/>
-                        <viewControllerLayoutGuide type="bottom" id="9co-ly-GIG"/>
+                        <viewControllerLayoutGuide type="top" id="dvD-zd-KT7"/>
+                        <viewControllerLayoutGuide type="bottom" id="dym-mI-QtN"/>
                     </layoutGuides>
                     <view key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="iN0-2g-g0s">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t3M-pO-Z0e" customClass="MTBubbleView">
+                            <view autoresizesSubviews="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t3M-pO-Z0e" customClass="MTBubbleView">
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -40,7 +40,6 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="UBw-m5-yQI"/>
-                                    <barButtonItem systemItem="add" id="vKU-4W-l9y"/>
                                 </items>
                             </toolbar>
                         </subviews>

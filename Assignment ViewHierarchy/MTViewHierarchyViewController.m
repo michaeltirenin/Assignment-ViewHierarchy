@@ -43,7 +43,7 @@
     }
     return _animator;
 }
-////
+
 - (UIDynamicAnimator *)animatorForSnap
 {
     if (!_snapBehavior) {
@@ -115,7 +115,6 @@
         [self.gravity addItem:touchView];
         [self.collider addItem:touchView];
     }];
-    
 }
 
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
@@ -127,9 +126,8 @@
 - (IBAction)clearAllTinyBubbles:(UIBarButtonItem *)sender
 {
     for (UIView *touchedView in [self.bubbleBounds subviews]) {
-    [touchedView removeFromSuperview];
-    }
-    
+        [touchedView removeFromSuperview];
+        }
 }
 
 - (IBAction)snapGesture:(UITapGestureRecognizer *)gesture
