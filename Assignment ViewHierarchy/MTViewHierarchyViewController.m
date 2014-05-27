@@ -8,18 +8,35 @@
 
 #import "MTViewHierarchyViewController.h"
 
-@interface MTViewHierarchyViewController ()
+@interface MTViewHierarchyViewController () <UICollisionBehaviorDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *bubbleView;
 @property (strong, nonatomic) UIDynamicAnimator *animator;
+@property (strong, nonatomic) UIDynamicAnimator *animatorForSnap;
 @property (strong, nonatomic) UIGravityBehavior *gravity;
 @property (strong, nonatomic) UICollisionBehavior *collider;
+@property (strong, nonatomic) UIDynamicItemBehavior *tinyBubblesBehavior;
+
+@property (strong, nonatomic) UISnapBehavior *snapBehavior;
+
+@property (strong, nonatomic) IBOutlet UILabel *instructions;
 
 @end
 
 @implementation MTViewHierarchyViewController
 
-//static const CGSize DROP_SIZE = { 40, 40 };
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.bubbleView.backgroundColor = [UIColor orangeColor];
+    self.bubbleView.layer.cornerRadius = self.bubbleView.frame.size.width / 2.0;
+    [self.bubbleView setClipsToBounds:YES];
+    
+    [[self instructions] setText:@"Tap to add. \nDouble-tap to move."];
+    [[self instructions] setTextAlignment:NSTextAlignmentCenter];
+    [[self instructions] setTextColor:[UIColor whiteColor]];
+}
 
 - (UIDynamicAnimator *)animator
 {
@@ -27,6 +44,15 @@
         _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.bubbleView];
     }
     return _animator;
+}
+//////
+- (UIDynamicAnimator *)animatorForSnap
+{
+    if (!_snapBehavior) {
+        UIDynamicAnimator *animatorForSnap = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+        self.animatorForSnap = animatorForSnap;
+    }
+    return _animatorForSnap;
 }
 
 - (UIGravityBehavior *)gravity
@@ -49,8 +75,27 @@
     return _collider;
 }
 
+- (UIDynamicItemBehavior *)tinyBubblesBehavior
+{
+    if (!_tinyBubblesBehavior) {
+        _tinyBubblesBehavior = [[UIDynamicItemBehavior alloc] init];
+        _tinyBubblesBehavior.resistance = 0.0;
+//        _tinyBubblesBehavior.elasticity = (arc4random() % 11 * 0.1); // returns between 0 and 1 (discrete values)
+        _tinyBubblesBehavior.elasticity = 0.7;
+        _tinyBubblesBehavior.density = 0.0;
+        _tinyBubblesBehavior.friction = 0.0;
+        _tinyBubblesBehavior.allowsRotation = YES;
+        [self.animator addBehavior:_tinyBubblesBehavior];
+    }
+    return _tinyBubblesBehavior;
+}
+
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    if (_instructions) {
+        [self.instructions removeFromSuperview];
+    }
+    
     // Enumerate over all the touches and draw a circle on the screen where the touches were
     [touches enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
         // Get a single touch and it's location
@@ -59,8 +104,8 @@
         
         // Draw a circle where the touch occurred
         UIView *touchView = [[UIView alloc] init];
-        touchView.backgroundColor = [UIColor whiteColor];
-        touchView.frame = CGRectMake(touchPoint.x, touchPoint.y, 40, 40);
+        touchView.backgroundColor = [UIColor blueColor];
+        touchView.frame = CGRectMake(touchPoint.x, touchPoint.y, 20, 20);
         touchView.layer.cornerRadius = touchView.frame.size.width / 2.0;
         [touchView setClipsToBounds:YES];
 
@@ -68,6 +113,7 @@
         
         [self.gravity addItem:touchView];
         [self.collider addItem:touchView];
+//        [self.tinyBubblesBehavior addItem:touchView];
     }];
 }
 
@@ -82,16 +128,29 @@
     for (UIView *touchedView in [self.bubbleView subviews]) {
     [touchedView removeFromSuperview];
     }
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
     
-    self.bubbleView.backgroundColor = [UIColor orangeColor];
-    self.bubbleView.layer.cornerRadius = self.bubbleView.frame.size.width / 2.0;
-    [self.bubbleView setClipsToBounds:YES];
+//    [self.bubbleView reloadData];
+
+//    [self.bubbleView removeFromSuperview];
+//    [self.bubbleView addSubview:self.view];
 }
 
+- (IBAction)snapGesture:(UITapGestureRecognizer *)gesture
+{
+    CGPoint point = [gesture locationInView:self.view];
+    
+    // Remove the previous behavior.
+    [self.animatorForSnap removeBehavior:self.snapBehavior];
+    
+    UISnapBehavior *snapBehavior = [[UISnapBehavior alloc] initWithItem:_bubbleView snapToPoint:point];
+    [self.animatorForSnap addBehavior:snapBehavior];
+    
+    self.snapBehavior = snapBehavior;
+}
+
+- (void)collisionBehavior:(UICollisionBehavior *)behavior beganContactForItem:(id<UIDynamicItem>)item withBoundaryIdentifier:(id<NSCopying>)identifier atPoint:(CGPoint)p
+{
+    [_bubbleView setBackgroundColor:[UIColor lightGrayColor]];
+}
 
 @end

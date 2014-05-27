@@ -16,9 +16,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R5f-F2-GHo">
+                            <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lbZ-SN-bda">
+                                <rect key="frame" x="60" y="140" width="200" height="200"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="instructions" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="mTc-HB-T7s">
+                                        <rect key="frame" x="0.0" y="63" width="200" height="74"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R5f-F2-GHo">
                                 <rect key="frame" x="0.0" y="436" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="5r8-QC-2j4"/>
+                                    <constraint firstAttribute="height" constant="44" id="5wl-6P-nVV"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem title="Clear" id="ful-vF-dct">
                                         <connections>
@@ -29,25 +48,30 @@
                                     <barButtonItem systemItem="add" id="vKU-4W-l9y"/>
                                 </items>
                             </toolbar>
-                            <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lbZ-SN-bda">
-                                <rect key="frame" x="20" y="100" width="280" height="280"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="HDR-cL-u3K" appends="YES" id="pyL-8v-dpI"/>
-                                </connections>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="9co-ly-GIG" firstAttribute="top" secondItem="R5f-F2-GHo" secondAttribute="bottom" id="IqY-u4-Wd5"/>
+                            <constraint firstItem="R5f-F2-GHo" firstAttribute="leading" secondItem="iN0-2g-g0s" secondAttribute="leading" id="OI6-qu-07g"/>
+                            <constraint firstItem="9co-ly-GIG" firstAttribute="top" secondItem="R5f-F2-GHo" secondAttribute="bottom" id="PxW-Xb-acI"/>
+                            <constraint firstAttribute="trailing" secondItem="R5f-F2-GHo" secondAttribute="trailing" id="kqb-sS-gYr"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="HDR-cL-u3K" appends="YES" id="Jm9-Br-aJH"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="bubbleView" destination="lbZ-SN-bda" id="LPH-fm-8l0"/>
+                        <outlet property="instructions" destination="mTc-HB-T7s" id="pkG-m7-RRu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer numberOfTapsRequired="2" id="HDR-cL-u3K"/>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="HDR-cL-u3K">
+                    <connections>
+                        <action selector="snapGesture:" destination="vXZ-lx-hvc" id="2Ev-Rl-uWX"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
         </scene>
     </scenes>
