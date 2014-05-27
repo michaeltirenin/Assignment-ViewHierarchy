@@ -14,13 +14,13 @@
 		F2B3EFAA193193E2005981E0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B3EFA9193193E2005981E0 /* main.m */; };
 		F2B3EFAE193193E2005981E0 /* MTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B3EFAD193193E2005981E0 /* MTAppDelegate.m */; };
 		F2B3EFB1193193E2005981E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2B3EFAF193193E2005981E0 /* Main.storyboard */; };
-		F2B3EFB4193193E2005981E0 /* MTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B3EFB3193193E2005981E0 /* MTViewController.m */; };
 		F2B3EFB6193193E2005981E0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2B3EFB5193193E2005981E0 /* Images.xcassets */; };
 		F2B3EFBD193193E2005981E0 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B3EFBC193193E2005981E0 /* XCTest.framework */; };
 		F2B3EFBE193193E2005981E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B3EF9D193193E2005981E0 /* Foundation.framework */; };
 		F2B3EFBF193193E2005981E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B3EFA1193193E2005981E0 /* UIKit.framework */; };
 		F2B3EFC7193193E2005981E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2B3EFC5193193E2005981E0 /* InfoPlist.strings */; };
 		F2B3EFC9193193E2005981E0 /* Assignment_ViewHierarchyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B3EFC8193193E2005981E0 /* Assignment_ViewHierarchyTests.m */; };
+		F2B3EFD61931BE7D005981E0 /* MTViewHierarchyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B3EFD51931BE7D005981E0 /* MTViewHierarchyViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +45,14 @@
 		F2B3EFAC193193E2005981E0 /* MTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTAppDelegate.h; sourceTree = "<group>"; };
 		F2B3EFAD193193E2005981E0 /* MTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTAppDelegate.m; sourceTree = "<group>"; };
 		F2B3EFB0193193E2005981E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F2B3EFB2193193E2005981E0 /* MTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTViewController.h; sourceTree = "<group>"; };
-		F2B3EFB3193193E2005981E0 /* MTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTViewController.m; sourceTree = "<group>"; };
 		F2B3EFB5193193E2005981E0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F2B3EFBB193193E2005981E0 /* Assignment ViewHierarchyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Assignment ViewHierarchyTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2B3EFBC193193E2005981E0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		F2B3EFC4193193E2005981E0 /* Assignment ViewHierarchyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Assignment ViewHierarchyTests-Info.plist"; sourceTree = "<group>"; };
 		F2B3EFC6193193E2005981E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F2B3EFC8193193E2005981E0 /* Assignment_ViewHierarchyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Assignment_ViewHierarchyTests.m; sourceTree = "<group>"; };
+		F2B3EFD41931BE7D005981E0 /* MTViewHierarchyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTViewHierarchyViewController.h; sourceTree = "<group>"; };
+		F2B3EFD51931BE7D005981E0 /* MTViewHierarchyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTViewHierarchyViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,11 +112,8 @@
 		F2B3EFA3193193E2005981E0 /* Assignment ViewHierarchy */ = {
 			isa = PBXGroup;
 			children = (
-				F2B3EFAC193193E2005981E0 /* MTAppDelegate.h */,
-				F2B3EFAD193193E2005981E0 /* MTAppDelegate.m */,
-				F2B3EFAF193193E2005981E0 /* Main.storyboard */,
-				F2B3EFB2193193E2005981E0 /* MTViewController.h */,
-				F2B3EFB3193193E2005981E0 /* MTViewController.m */,
+				F2B3EFD2193194A4005981E0 /* View */,
+				F2B3EFD3193194B2005981E0 /* Controller */,
 				F2B3EFB5193193E2005981E0 /* Images.xcassets */,
 				F2B3EFA4193193E2005981E0 /* Supporting Files */,
 			);
@@ -126,6 +123,8 @@
 		F2B3EFA4193193E2005981E0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F2B3EFAC193193E2005981E0 /* MTAppDelegate.h */,
+				F2B3EFAD193193E2005981E0 /* MTAppDelegate.m */,
 				F2B3EFA5193193E2005981E0 /* Assignment ViewHierarchy-Info.plist */,
 				F2B3EFA6193193E2005981E0 /* InfoPlist.strings */,
 				F2B3EFA9193193E2005981E0 /* main.m */,
@@ -150,6 +149,23 @@
 				F2B3EFC5193193E2005981E0 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F2B3EFD2193194A4005981E0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F2B3EFAF193193E2005981E0 /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		F2B3EFD3193194B2005981E0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F2B3EFD41931BE7D005981E0 /* MTViewHierarchyViewController.h */,
+				F2B3EFD51931BE7D005981E0 /* MTViewHierarchyViewController.m */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,8 +266,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2B3EFD61931BE7D005981E0 /* MTViewHierarchyViewController.m in Sources */,
 				F2B3EFAA193193E2005981E0 /* main.m in Sources */,
-				F2B3EFB4193193E2005981E0 /* MTViewController.m in Sources */,
 				F2B3EFAE193193E2005981E0 /* MTAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

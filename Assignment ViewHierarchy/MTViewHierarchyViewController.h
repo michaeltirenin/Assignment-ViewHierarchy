@@ -1,5 +1,5 @@
 //
-//  MTViewController.h
+//  MTViewHierarchyViewController.h
 //  Assignment ViewHierarchy
 //
 //  Created by Michael Tirenin on 5/24/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MTViewController : UIViewController
+@interface MTViewHierarchyViewController : UIViewController
 
 @end
