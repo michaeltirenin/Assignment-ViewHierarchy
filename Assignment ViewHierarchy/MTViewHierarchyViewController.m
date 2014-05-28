@@ -127,6 +127,7 @@
 {
     for (UIView *touchedView in [self.bubbleBounds subviews]) {
         [touchedView removeFromSuperview];
+        [self.collider removeItem:touchedView];
         }
 }
 
